@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+
 class Rectangle:
     """Rectangle class defined by width and height.
     Attributes:
