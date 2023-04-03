@@ -1,4 +1,8 @@
 #!/usr/bin/python3
+"""Module 8-rectangle
+Defines a Rectangle class.
+"""
+
 
 class Rectangle:
     """Rectangle class defined by width and height.

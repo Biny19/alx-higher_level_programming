@@ -1,4 +1,8 @@
 #!/usr/bin/python3
+"""Module 6-rectangle
+Defines a Rectangle class.
+"""
+
 
 class Rectangle:
     """Rectangle class defined by width and height.
@@ -92,3 +96,4 @@ class Rectangle:
         if self.__height == 0 or self.__width == 0:
             return 0
         return 2 * (self.__width + self.__height)
+
