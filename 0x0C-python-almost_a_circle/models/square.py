@@ -17,6 +17,11 @@ class Square(Rectangle):
         """
         super().__init__(size, size, x, y, id)
 
+    def __str__(self):
+        """ 
+            module string represation of square
+        """
+        return "[Square] ({}) {}/{} - {}".format(self.id, self.x, self.y, self.width)
     @property
     def size(self):
         """
@@ -32,33 +37,29 @@ class Square(Rectangle):
         self.width = value
         self.height = value
 
-    def __str__(self):
-        """
-            module string represation of square
-        """
-        return "[Square] ({:d}) {:d}/{:d} - {:d}".format(self.id,
-                                                         self.x,
-                                                         self.y,
-                                                         self.width)
-
-    def update(self, *args, **kwargs):
+   def update(self, *args, **kwargs):
         """
             module update square
         """
         if len(args):
             for i, arg in enumerate(args):
                 if i == 0:
-                    self.id = arg
-                elif i == 1:
                     self.size = arg
-                elif i == 2:
+                elif i == 1:
                     self.x = arg
-                elif i == 3:
+                elif i == 2:
                     self.y = arg
+                elif i == 3:
+                    self.id = arg
         else:
-            for key, value in kwargs.items():
-                if hasattr(self, key) is True:
-                    setattr(self, key, value)
+            if "size" in kwargs:
+                self.size = kwargs["size"]
+            if "x" in kwargs:
+                self.x = kwargs["x"]
+            if "y" in kwargs:
+                self.y = kwargs["y"]
+            if "id" in kwargs:
+                self.id = kwargs["id"]
 
     def to_dictionary(self):
         """
@@ -69,4 +70,4 @@ class Square(Rectangle):
             "size": self.size,
             "x": self.x,
             "y": self.y
-        }
+            }
