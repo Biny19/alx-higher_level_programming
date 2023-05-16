@@ -1,2 +1,2 @@
--- list all databases
-SHAW DATABASES;
+-- Lists all databases
+SHOW DATABASES;
