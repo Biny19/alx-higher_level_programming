@@ -1,16 +1,31 @@
 #!/usr/bin/python3
-"""  lists all states from the database hbtn_0e_0_usa """
+""" Importing MySQLdb for database tasks. Sys is for retrieving
+    command line arguments """
 import MySQLdb
 import sys
+""" 0-select_states.py """
 
 
-if __name__ == "__main__":
-    db = MySQLdb.connect(host="localhost", user=sys.argv[1],
-                         passwd=sys.argv[2], db=sys.argv[3], port=3306)
-    cur = db.cursor()
-    cur.execute("SELECT * FROM states")
-    rows = cur.fetchall()
-    for row in rows:
-        print(row)
-    cur.close()
-    db.close()
+def getStates():
+    """
+    Driving function. Actually not necessary, but done to make
+    the entire code nicer to read.
+    Accesses the database with user and password, all passed in,
+    to localhost at port 3306. Then, retrieve all information
+    from the states database and prints them all out
+    """
+    mydb = MySQLdb.connect(host='localhost',
+                           user=sys.argv[1],
+                           passwd=sys.argv[2],
+                           db=sys.argv[3],
+                           port=3306)
+
+    mycursor = mydb.cursor()
+    mycursor.execute("SELECT * FROM states ORDER BY states.id")
+    myresult = mycursor.fetchall()
+
+    for x in myresult:
+        print(x)
+
+if __name__ == '__main__':
+    getStates()
